@@ -1,0 +1,81 @@
+.container {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #edff03;
+}
+
+.title {
+    font-family: 'Praise', cursive;
+    font-size: 44px;
+    text-align: center;
+    letter-spacing: normal;
+    margin-top: -5px;
+    color: #08253f;
+    font-weight: 400;
+}
+
+.titleContent {
+    font-size: 14px;
+    color: #08253f;
+    font-weight: 400;
+    text-align: center;
+    margin-top: -30px;
+}
+
+.firstBubbleBox {
+    height: 135px;
+    background-image: url(/src/assets/images/firstBubble.svg);
+    width: 327px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 24px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.secondBubbleBox {
+    height: 135px;
+    background-image: url(/src/assets/images/secondBubble.svg);
+    width: 327px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 14px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.emailTitle {
+    margin-top: 15%;
+    font-family: Praise;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.emailContent {
+    margin-top: -20px;
+    font-size: 14px;
+}
+
+.lastBox {
+    margin-top: 48px;
+}
+
+.talkLink {
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: #08253f;
+    transition: 0.5s;
+
+}
+
+.talkLink:hover {
+    color: gray;
+    transition: 0.5s;
+}
