@@ -4,6 +4,8 @@ import Context from '../../../context/store/store';
 import welcomeImage from '../../../assets/images/welcomeImage.svg';
 import logoIcon from '../../../assets/images/logoIcon.svg';
 import { Link, useHistory } from 'react-router-dom';
+import { loginAction } from '../../../actions';
+
 
 
 
@@ -15,22 +17,16 @@ export default function Welcome() {
     const history = useHistory()
 
 
-
-    const userLogin = (event) => {
+    const userLogin = async (event) => {
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         if (email.length === 0) {
             setErrorMessage('Please enter your email address');
         }
         else if
-            (email.length < 5) {
-            setErrorMessage('Please enter a properly email address. ');
+            (!email.match(pattern)) {
+            setErrorMessage('Please enter a vaild email address. ');
 
-        }
-        else if
-            (email.length > 5 && password === 0) {
-            setErrorMessage('Please write your password. ');
-
-        }
-        else if
+        } else if
             (email !== state.email) {
             setErrorMessage('Sorry! No registered user found for this e-mail address');
         }
@@ -42,11 +38,8 @@ export default function Welcome() {
             (email === state.email && password !== state.password) {
             setErrorMessage('Your password is wrong. Please check!')
         }
-
         else {
-            dispatch({ type: "SET_EMAIL", payload: email })
-            dispatch({ type: "SET_PASSWORD", payload: password })
-            dispatch({ type: "LOGIN", payload: true })
+            await dispatch(loginAction())
             history.push('/')
         }
     }
@@ -73,7 +66,7 @@ export default function Welcome() {
                     <img src={logoIcon} className={logoIcon} alt={'logo icon'} />
                     <h1 className='title'>AuthSteps</h1>
                     <div className='titleContent'>
-                        Please login with Context API data. <br /> Email: {state.email}  <br /> Password: {state.password}
+                        Please login with Context API data or create an account. <br /> Email: {state.email}  <br /> Password: {state.password}
                     </div>
 
                     <div className='inputBox'>

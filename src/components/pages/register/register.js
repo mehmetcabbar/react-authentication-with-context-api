@@ -4,6 +4,8 @@ import Context from '../../../context/store/store';
 import welcomeImage from '../../../assets/images/welcomeImage.svg';
 import logoIcon from '../../../assets/images/logoIcon.svg';
 import { Link, useHistory } from 'react-router-dom';
+import { emailAction, passwordAction, loginAction } from '../../../actions';
+
 
 
 
@@ -15,12 +17,13 @@ export default function Register() {
     const history = useHistory()
 
     const createNewUser = (event) => {
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         if (email.length === 0) {
             setErrorMessage('Enter your email address');
         }
         else if
-            (email.length < 5) {
-            setErrorMessage('Please enter a properly email address. ');
+            (!email.match(pattern)) {
+            setErrorMessage('Please enter a vaild email address. ');
 
         }
         else if
@@ -37,9 +40,9 @@ export default function Register() {
             setErrorMessage('Please write your password')
         }
         else {
-            dispatch({ type: "SET_EMAIL", payload: email })
-            dispatch({ type: "SET_PASSWORD", payload: password })
-            dispatch({ type: "LOGIN", payload: true })
+            dispatch(emailAction())
+            dispatch(passwordAction())
+            dispatch(loginAction())
             history.push('/')
         }
     }

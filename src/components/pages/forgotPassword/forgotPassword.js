@@ -4,6 +4,8 @@ import Context from '../../../context/store/store';
 import welcomeImage from '../../../assets/images/welcomeImage.svg';
 import logoIcon from '../../../assets/images/logoIcon.svg';
 import { Link } from 'react-router-dom';
+import { emailAction } from '../../../actions';
+
 
 
 
@@ -12,9 +14,15 @@ export default function ForgotPassword() {
     const [showPassword, setShowPassword] = useState('')
     const { state, dispatch } = useContext(Context)
 
-    const checkPassword = () => {
+    const checkPassword = async () => {
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         if (email.length === 0) {
             setShowPassword('Please, enter your email address')
+        }
+        else if
+            (!email.match(pattern)) {
+            setShowPassword('Please enter a vaild email address. ');
+
         }
         else if
             (email.length < 5) {
@@ -24,7 +32,7 @@ export default function ForgotPassword() {
             setShowPassword('No registered user found for this e-mail address')
         }
         else {
-            dispatch({ type: "SET_EMAIL", payload: email })
+            await dispatch(emailAction())
             alert('Your password: ' + state.password)
         }
     }
@@ -32,7 +40,7 @@ export default function ForgotPassword() {
     return (
         <div className='containerForgotPassword'>
             <div className='bottomSignUp'>
-                Do you need help? &nbsp; <Link href='/forgotPassword' className='signupLink'> Contact Us</Link>
+                For home page &nbsp; <Link href='/forgotPassword' className='signupLink'> Contact Us</Link>
             </div>
             <div className='wrapperRight'>
                 <div className='imageBox'>

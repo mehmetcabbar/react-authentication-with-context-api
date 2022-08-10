@@ -1,8 +1,7 @@
-
 export function reducer(state = {}, action) {
-    console.log(action.payload)
     switch (action.type) {
-        case "SET_EMAIL": state.email = action.payload
+        case
+            "SET_EMAIL": state.email = action.payload
             return { ...state }
         case "SET_PASSWORD": state.password = action.payload
             return { ...state }

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './App.css';
 import Provider from './context/provider/provider';
 import Navigation from './components/navigation/navigation';
