@@ -3,6 +3,7 @@ import './home.css';
 import Context from '../../../context/store/store';
 import Avatar from '../../../assets/images/avatar.svg';
 import { useHistory, Link } from 'react-router-dom';
+import { logoutAction } from '../../../actions';
 
 
 
@@ -12,7 +13,7 @@ const Home = () => {
     const history = useHistory('')
 
     const logOut = (e) => {
-        dispatch({ type: "LOGIN", payload: false })
+        dispatch(logoutAction())
         history.push('/')
     }
 

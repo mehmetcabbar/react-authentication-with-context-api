@@ -35,6 +35,10 @@ export default function Welcome() {
             setErrorMessage('Please write your password')
         }
         else if
+            (password.length < 6) {
+            setErrorMessage('Password should be more than 6 characters.')
+        }
+        else if
             (email === state.email && password !== state.password) {
             setErrorMessage('Your password is wrong. Please check!')
         }
@@ -42,13 +46,6 @@ export default function Welcome() {
             await dispatch(loginAction())
             history.push('/')
         }
-    }
-
-    const onChangeEmail = (e) => {
-        setEmail(e)
-    }
-    const onChangePassword = (e) => {
-        setPassword(e)
     }
 
     return (
@@ -66,7 +63,7 @@ export default function Welcome() {
                     <img src={logoIcon} className={logoIcon} alt={'logo icon'} />
                     <h1 className='title'>AuthSteps</h1>
                     <div className='titleContent'>
-                        Please login with Context API data or create an account. <br /> Email: {state.email}  <br /> Password: {state.password}
+                        Please login with Context API or create an account. <br /> Email: {state.email}  <br /> Password: {state.password}
                     </div>
 
                     <div className='inputBox'>
@@ -79,9 +76,7 @@ export default function Welcome() {
                             placeholder='Email address'
                             name='email'
                             value={email}
-                            onChange={(event) =>
-                                onChangeEmail(event.target.value)
-                            }
+                            onChange={(event) => setEmail(event.target.value)}
                         />
                     </div>
                     <div className='passwordBox'>
@@ -94,9 +89,7 @@ export default function Welcome() {
                             placeholder='Password'
                             name='password'
                             value={password}
-                            onChange={(event) =>
-                                onChangePassword(event.target.value)
-                            }
+                            onChange={(event) => setPassword(event.target.value)}
                         />
                     </div>
                     {errorMessage ? (

@@ -25,23 +25,22 @@ export default function Register() {
             (!email.match(pattern)) {
             setErrorMessage('Please enter a vaild email address. ');
 
-        }
-        else if
-            (email.length > 5 && password === 0) {
-            setErrorMessage('Please write a password. ');
-
-        }
-        else if
+        } else if
             (email === state.email) {
-            setErrorMessage('This email address is taken!');
+            setErrorMessage('This email address is taken by another user!');
         }
         else if
             (password.length === 0) {
             setErrorMessage('Please write your password')
         }
+        else if
+            (password.length < 6) {
+            setErrorMessage('Password should be more than 6 characters.')
+        }
+
         else {
-            dispatch(emailAction())
-            dispatch(passwordAction())
+            dispatch(emailAction(email))
+            dispatch(passwordAction(password))
             dispatch(loginAction())
             history.push('/')
         }
@@ -62,7 +61,7 @@ export default function Register() {
                     <img src={logoIcon} className={logoIcon} alt={'logo icon'} />
                     <h1 className='title'>AuthSteps</h1>
                     <div className='titleContent'>
-                        Create a new account in a minute.
+                        Create a new account in a minute. <br /> Fill the form and press button!
                     </div>
                     <form>
                         <div className='inputBox'>
@@ -74,8 +73,7 @@ export default function Register() {
                                 type='text'
                                 placeholder='Email address'
                                 value={email}
-                                onChange={(event) => setEmail(event.target.value)
-                                }
+                                onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
                         <div className='passwordBox'>
@@ -87,8 +85,7 @@ export default function Register() {
                                 type='password'
                                 placeholder='Password'
                                 value={password}
-                                onChange={(event) => setPassword(event.target.value)
-                                }
+                                onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
                         {errorMessage ? (
@@ -100,7 +97,6 @@ export default function Register() {
                     </form>
                     <div className='forgotPassword'>
                         You agree our <Link className='termOfUseLink' href='/register'>Terms of Use</Link> <br></br> by sign up.
-
                     </div>
                 </div>
 

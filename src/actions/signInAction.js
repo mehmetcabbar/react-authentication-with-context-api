@@ -6,14 +6,14 @@ export const LOGOUT = 'LOGOUT'
 export const emailAction = (email) => {
     return {
         type: SET_EMAIL,
-        action: email
+        payload: email
     }
 }
 
 export const passwordAction = (password) => {
     return {
         type: SET_PASSWORD,
-        action: password
+        payload: password
     }
 }
 
@@ -21,5 +21,12 @@ export const loginAction = () => {
     return {
         type: LOGIN,
         payload: true
+    }
+}
+
+export const logoutAction = () => {
+    return {
+        type: LOGOUT,
+        payload: false
     }
 }
