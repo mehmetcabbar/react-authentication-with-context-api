@@ -1,10 +1,13 @@
-# Getting Started with Create React App
+# Authentication Mechanism
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an authentication system without DB. React Js, Context API and React Router Dom were used in the project. There are 4 pages in the project. Signin(Welcome), Register, Forgot Password and Home. If you want, you can check the deployed format of the project by clicking here.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Screenshots from project
+
+The images of the project basically look like the below. Check the project for a more details and screen activities.
+
+![ScreenShots](https://user-images.githubusercontent.com/90902141/184347401-b17eb650-7ad5-4eda-9fdb-326f9854132d.png)
 
 ### `npm start`
 
